@@ -1,6 +1,6 @@
 # install package common to package and source install
 case node[:platform]
-when "redhat","centos","scientific","fedora","suse"
+when "redhat","centos","scientific","fedora","suse","amazon"
   packages = %w[apr apr-util pcre curl]
 when "ubuntu","debian"
   packages = %w[libapr1 libaprutil1 libpcre3 libxml2 libcurl3]
@@ -17,7 +17,7 @@ if node[:mod_security][:from_source]
   
   #install required libs
   case node[:platform]
-  when "redhat","centos","scientific","fedora","suse"
+  when "redhat","centos","scientific","fedora","suse","amazon"
     packages = %w[pcre-devel httpd-devel libxml2-devel curl-devel]
   when "ubuntu","debian"
     packages = %w[apache2-dev libxml2-dev libcurl3-dev]
@@ -68,7 +68,7 @@ else
   # INSTALL FROM PACKAGE
   
   case node[:platform]
-  when "redhat","centos","scientific","fedora","suse"
+  when "redhat","centos","scientific","fedora","suse","amazon"
     package "mod_security"
   when "ubuntu","debian"
     package "libapache-mod-security"
